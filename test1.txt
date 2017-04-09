@@ -1,0 +1,81 @@
+    /* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner in = new Scanner(System.in);
+		int L = in.nextInt();
+		int W = in.nextInt();
+		
+		char[][] C = new char[L][W];
+		
+		// putting characters;
+		for(int i =0;i<L;i++){
+		    for(int j=0;j<W;j++){
+		        C[i][j] = in.next().charAt(0);
+		        
+		    }
+		}
+		int clenght =0;
+		int cwidth = 0;
+		int temp = 0;
+		int v = 0;
+		int hz = 0;
+		
+	    // get the largest gift
+	    
+	    for(int i =L-1;i>=0;i--){
+	         
+		    for(int j=0;j<W;j++){
+                if(C[i][j] == '#'){
+	                cwidth++;
+	                
+	            } if(C[i][j] == '#' && (C[i][j+1] == '.' || j== W-1)) {
+	                for(int k=0;k<cwidth;k++){
+	                        if((i-k) < 0){
+	                            break;
+	                        }
+                            if(C[i-k][j] == '#'){
+                                clenght++; 
+                            }
+	                    for(int h=j;h<cwidth;h++){
+	                        if(C[i-k][j] != '#'){
+	                            break;
+	                        }
+	                    }
+	                }
+	                if(cwidth == clenght && cwidth > temp){
+	                   hz = (i+1)-cwidth;
+	                   v = (j+1)-cwidth;
+                       temp = cwidth;
+                    } 
+	                cwidth =0;
+	                clenght =0;
+	            }
+	            
+  
+                 
+	        }
+		}
+	        //output
+	        
+		for(int i =0;i<L;i++){
+		    for(int j=0;j<W;j++){
+		        if(j >= v && j< v+temp && i >=hz && i<hz+temp){
+		            System.out.print("# ");
+		        } else  
+		            System.out.print(". ");
+		        
+		    }
+		    System.out.println("");
+		}
+		
+	}
+}

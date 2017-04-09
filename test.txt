@@ -1,0 +1,84 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		// your code goes here
+		Scanner in = new Scanner(System.in);
+		
+		int c = in.nextInt();
+		    
+		    for(int i = 0;i<c;i++){
+		       
+		        int B = in.nextInt();
+		        int L = in.nextInt();
+		        
+		        int[][] items = new int[L][2];
+		        int[] m = new int[L];
+		        int[] temp = new int[L];
+		        boolean first = true;
+		        int[] index = new int[L];
+		        int count =0;
+		        int test = 0;
+		        for(int k = 0;k<L;k++){
+		           
+		            
+                    items[k][0] = in.nextInt();
+                    items[k][1] = in.nextInt();
+		            
+		        }
+		        for(int k = L-1;k>=0;k--){
+		           
+		            count=1;
+		            m[k] = items[k][0];
+		            int total = items[k][1];
+		            
+		            for(int h = L-1;h>=0;h--){
+		               
+		                if(items[k][0]==items[h][0]){
+		                  
+		                    continue;
+		                    
+		                }
+		                
+		                    
+		                
+		                
+		                
+		              
+		                if( total <=  B){
+		                   total += items[h][1];
+		                   m[h] = items[h][0];
+		                   count+=1;
+		                } else {
+		                    if(count > test){
+		                        temp = m;
+		                        test = count;
+		                    }
+		                    total = 0;
+		                    m = new int[L];
+		                }
+    		                
+    		                  
+		                
+		            }
+		              
+		          
+		          
+		        }
+		        System.out.println(Arrays.toString(temp));
+		        // display
+		        
+		        
+
+		    }
+		
+		
+	}
+}
